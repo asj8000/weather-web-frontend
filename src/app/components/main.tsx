@@ -41,8 +41,6 @@ const Main: React.FC = () => {
         const weatherResponse = await axios.get<WeatherData>(
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`,
         );
-        console.log("weatherResponse");
-        console.log(weatherResponse);
         setWeatherData(weatherResponse.data);
 
         // 주간 예보 데이터
@@ -66,39 +64,132 @@ const Main: React.FC = () => {
   const dailyForecast = forecastData.list.slice(0, 5);
 
   return (
-    <div className="bg-gray-900 text-white p-6 min-h-screen">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-xl font-bold">Morning, Seoul</h2>
-          <p>{new Date().toLocaleString()}</p>
-        </div>
+    <div className="relative h-screen bg-gray-900 text-white">
+      <div className="hidden sm:block absolute inset-0 overflow-hidden h-full w-full ">
+        <Image
+          src="/images/aurora_mb.webp"
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          className="opacity-60"
+        />
       </div>
-      <div className="mt-8 bg-gray-800 p-6 rounded-lg">
-        <h3 className="text-lg font-semibold">Weather</h3>
-        <p>{weatherData.name}</p>
-        <div className="text-6xl font-bold">{Math.round(main.temp)}°</div>
-        <p>{weather[0].description}</p>
-      </div>
-      <div className="mt-8">
-        <h3 className="text-lg font-semibold">Forecast</h3>
-        <div className="grid grid-cols-5 gap-4 mt-4">
-          {dailyForecast.map((forecast, index) => (
-            <div key={index} className="bg-gray-800 p-4 rounded-lg text-center">
-              <p>
-                {new Date(forecast.dt * 1000).toLocaleDateString("en", {
-                  weekday: "short",
-                })}
-              </p>
-              <Image
-                src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
-                alt="weather icon"
-                className="mx-auto"
-                width="600"
-                height="600"
-              />
-              <p>{Math.round(forecast.main.temp)}°</p>
+
+      <div className="relative h-screen max-w-sm mx-auto md:my-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#4e54c8]/80 to-[#8f94fb]/80 rounded-2xl shadow-lg opacity-80"></div>
+
+        <div className="relative overflow-scroll p-6 text-center bg-transparent rounded-2xl h-full">
+          <div className="mb-4">
+            <p className="text-lg font-semibold">Seoul, KR</p>
+            <p className="text-sm opacity-70">{new Date().toLocaleString()}</p>
+          </div>
+
+          <div className="text-7xl font-bold mb-2">
+            {Math.round(main.temp)}°C
+          </div>
+          <p className="text-md font-light mb-6">{weather[0].description}</p>
+
+          <div className="flex justify-around items-center bg-white bg-opacity-10 rounded-xl p-4 mb-6">
+            <div className="text-center">
+              <p>Today</p>
+              <p className="font-semibold">↑17° ↓10°</p>
             </div>
-          ))}
+            <div className="text-center">
+              <p>Yesterday</p>
+              <p className="font-semibold">↑17° ↓10°</p>
+            </div>
+          </div>
+
+          <div className="text-left mb-4">
+            <p className="font-semibold text-lg">Hourly Forecast</p>
+            <div className="flex overflow-x-auto space-x-4 mt-2">
+              {dailyForecast.map((forecast, index) => (
+                <div key={index} className="text-center">
+                  <Image
+                    src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                    alt="weather icon"
+                    width={50}
+                    height={50}
+                  />
+                  <p className="font-semibold">
+                    {Math.round(forecast.main.temp)}°
+                  </p>
+                  <p className="text-sm opacity-70">
+                    {new Date(forecast.dt * 1000).toLocaleTimeString("en", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-left mt-8">
+            <p className="font-semibold text-lg">Tomorrow</p>
+            <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-xl p-4 mt-2">
+              <Image
+                src={`https://openweathermap.org/img/wn/${dailyForecast[0].weather[0].icon}@2x.png`}
+                alt="weather icon"
+                width={50}
+                height={50}
+              />
+              <p className="text-sm opacity-70">Light Rain Showers</p>
+              <p className="font-semibold">↑17° ↓10°</p>
+            </div>
+          </div>
+          <div className="text-left mt-8">
+            <p className="font-semibold text-lg">Tomorrow</p>
+            <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-xl p-4 mt-2">
+              <Image
+                src={`https://openweathermap.org/img/wn/${dailyForecast[0].weather[0].icon}@2x.png`}
+                alt="weather icon"
+                width={50}
+                height={50}
+              />
+              <p className="text-sm opacity-70">Light Rain Showers</p>
+              <p className="font-semibold">↑17° ↓10°</p>
+            </div>
+          </div>
+          <div className="text-left mt-8">
+            <p className="font-semibold text-lg">Tomorrow</p>
+            <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-xl p-4 mt-2">
+              <Image
+                src={`https://openweathermap.org/img/wn/${dailyForecast[0].weather[0].icon}@2x.png`}
+                alt="weather icon"
+                width={50}
+                height={50}
+              />
+              <p className="text-sm opacity-70">Light Rain Showers</p>
+              <p className="font-semibold">↑17° ↓10°</p>
+            </div>
+          </div>
+          <div className="text-left mt-8">
+            <p className="font-semibold text-lg">Tomorrow</p>
+            <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-xl p-4 mt-2">
+              <Image
+                src={`https://openweathermap.org/img/wn/${dailyForecast[0].weather[0].icon}@2x.png`}
+                alt="weather icon"
+                width={50}
+                height={50}
+              />
+              <p className="text-sm opacity-70">Light Rain Showers</p>
+              <p className="font-semibold">↑17° ↓10°</p>
+            </div>
+          </div>
+          <div className="text-left mt-8">
+            <p className="font-semibold text-lg">Tomorrow</p>
+            <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-xl p-4 mt-2">
+              <Image
+                src={`https://openweathermap.org/img/wn/${dailyForecast[0].weather[0].icon}@2x.png`}
+                alt="weather icon"
+                width={50}
+                height={50}
+              />
+              <p className="text-sm opacity-70">Light Rain Showers</p>
+              <p className="font-semibold">↑17° ↓10°</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

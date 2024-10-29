@@ -14,6 +14,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  plugins: [require("tailwind-scrollbar-hide")],
 };
 export default config;

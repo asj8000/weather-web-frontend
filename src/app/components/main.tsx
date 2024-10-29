@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 interface WeatherData {
   main: {
@@ -54,7 +55,7 @@ const Main: React.FC = () => {
       }
     };
 
-    fetchWeatherData();
+    fetchWeatherData().then((r) => console.log(r));
   }, []);
 
   if (!weatherData || !forecastData) {
@@ -88,8 +89,8 @@ const Main: React.FC = () => {
                   weekday: "short",
                 })}
               </p>
-              <img
-                src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+              <Image
+                src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 alt="weather icon"
                 className="mx-auto"
               />

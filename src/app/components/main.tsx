@@ -93,6 +93,8 @@ const Main: React.FC = () => {
                 src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 alt="weather icon"
                 className="mx-auto"
+                width="600"
+                height="600"
               />
               <p>{Math.round(forecast.main.temp)}°</p>
             </div>

@@ -27,30 +27,6 @@ const useCityData = (fetchWeatherData: (city: string) => void) => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
 
-  useEffect(() => {
-    const loadedCities = loadSavedCities(DEFAULT_CITY_INFO);
-    setSavedCities(loadedCities);
-    const cityFromCookie =
-      Cookies.get("selectedCity") || DEFAULT_CITY_INFO.name;
-    setSelectedCity(cityFromCookie);
-    fetchWeatherData(cityFromCookie);
-  }, [fetchWeatherData]);
-
-  useEffect(() => {
-    saveCitiesToCookies(savedCities);
-  }, [savedCities]);
-
-  useEffect(() => {
-    saveSelectedCityToCookies(selectedCity);
-    fetchWeatherData(selectedCity);
-  }, [selectedCity, fetchWeatherData]);
-
-  useEffect(() => {
-    if (allCities.length === 0) {
-      loadCityList().then((r) => r);
-    }
-  }, [allCities.length, isSearchOpen, loadCityList]);
-
   const loadCityList = useCallback(async () => {
     try {
       const response = await fetch("/data/city_list.json");
@@ -90,6 +66,30 @@ const useCityData = (fetchWeatherData: (city: string) => void) => {
   const removeSavedCity = (cityName: string) => {
     setSavedCities((prev) => prev.filter((city) => city.name !== cityName));
   };
+
+  useEffect(() => {
+    const loadedCities = loadSavedCities(DEFAULT_CITY_INFO);
+    setSavedCities(loadedCities);
+    const cityFromCookie =
+      Cookies.get("selectedCity") || DEFAULT_CITY_INFO.name;
+    setSelectedCity(cityFromCookie);
+    fetchWeatherData(cityFromCookie);
+  }, [fetchWeatherData]);
+
+  useEffect(() => {
+    saveCitiesToCookies(savedCities);
+  }, [savedCities]);
+
+  useEffect(() => {
+    saveSelectedCityToCookies(selectedCity);
+    fetchWeatherData(selectedCity);
+  }, [selectedCity, fetchWeatherData]);
+
+  useEffect(() => {
+    if (allCities.length === 0) {
+      loadCityList().then((r) => r);
+    }
+  }, [allCities.length, isSearchOpen, loadCityList]);
 
   return {
     isMenuOpen,

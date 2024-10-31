@@ -49,7 +49,7 @@ const useCityData = (fetchWeatherData: (city: string) => void) => {
     if (allCities.length === 0) {
       loadCityList().then((r) => r);
     }
-  }, [isSearchOpen]);
+  }, [allCities.length, isSearchOpen, loadCityList]);
 
   const loadCityList = useCallback(async () => {
     try {

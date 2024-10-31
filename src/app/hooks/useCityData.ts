@@ -47,7 +47,7 @@ const useCityData = (fetchWeatherData: (city: string) => void) => {
 
   useEffect(() => {
     if (allCities.length === 0) {
-      loadCityList();
+      loadCityList().then((r) => r);
     }
   }, [isSearchOpen]);
 

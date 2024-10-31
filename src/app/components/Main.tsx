@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import WeatherDisplay from "./WeatherDisplay";
+import WeatherDisplay from "./forecast/WeatherDisplay";
 import SidebarMenu from "./SidebarMenu";
 import useWeatherData from "../hooks/useWeatherData";
 import useCityData from "../hooks/useCityData";

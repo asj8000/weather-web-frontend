@@ -1,6 +1,7 @@
 export interface WeatherData {
   main: {
     temp: number;
+    humidity: number;
   };
   weather: {
     description: string;
@@ -9,7 +10,14 @@ export interface WeatherData {
   name: string;
   sys: {
     country: string;
+    sunrise: number;
+    sunset: number;
   };
+  wind: {
+    speed: number;
+    deg: number;
+  };
+  visibility: number;
 }
 
 export interface ForecastData {
@@ -25,5 +33,6 @@ export interface ForecastData {
       icon: string;
     }[];
     dt_txt: string;
+    visibility: number;
   }[];
 }

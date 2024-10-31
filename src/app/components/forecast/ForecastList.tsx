@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ForecastData } from "../types/WeatherData";
+import { ForecastData } from "../../types/WeatherData";
 
 interface ForecastListProps {
   todayForecast: ForecastData["list"];
@@ -19,7 +19,7 @@ const ForecastList: React.FC<ForecastListProps> = ({
   <>
     <div className="text-left mb-4">
       <p className="font-semibold text-lg">Hourly Forecast</p>
-      <div className="flex gap-6 overflow-x-auto bg-white bg-opacity-10 rounded-lg py-4 px-6 mb-8 w-full scrollbar-hide justify-start align-baseline mt-2">
+      <div className="flex gap-6 overflow-x-auto bg-white bg-opacity-10 rounded-lg py-4 px-6 mb-8 w-full scrollbar-hide  align-baseline mt-2 justify-start">
         {todayForecast.map((forecast, index) => (
           <div key={index} className="text-center">
             <Image

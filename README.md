@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather Web Frontend
+
+![App Demo](./public/images/demo/demo1.png)
+
+## Project Overview
+
+Weather Web Frontend is a web application that allows users to view the current and weekly weather forecast for any
+selected city. Built using the OpenWeatherMap API, this app provides real-time weather information and allows users to
+save and manage multiple cities for easy access.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the Repository and Install Dependencies
+
+```bash
+# Clone the repository
+git clone https://github.com/asj8000/weather-web-frontend.git
+cd weather-web-frontend
+
+# Install dependencies
+npm install
+```
+
+### 2. Set Up Environment Variables
+
+You will need an API key from OpenWeatherMap. Create a .env.local file in the root directory and add your API key as
+follows:
+
+```bash
+NEXT_PUBLIC_OPENWEATHERMAP_API_KEY=YOUR_API_KEY_HERE
+```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to see the app in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo Screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![App Demo](./public/images/demo/demo1.png)
+![App Demo](./public/images/demo/demo2.png)
 
-## Learn More
+## Background Image
 
-To learn more about Next.js, take a look at the following resources:
+The background image was generated using OpenAI’s GPT-4 model. Ty GPT :)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development Time
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+According to WakaTime, this project took approximately **5 hours and 43 minutes** to develop.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the MIT License.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **Weather Data API**: OpenWeatherMap API
+- **State Management**: React Hooks
+
+---
+
+Feel free to reach out if you have any questions. Happy coding! 🚀
